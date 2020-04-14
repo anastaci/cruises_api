@@ -1,36 +1,33 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
 
-class Staff extends Model {}
+class BloodRequest extends Model {}
 
-Staff.init({
-    fullName: {
+BloodRequest.init({
+    group: {
         type: DataTypes.STRING,
-        field: 'full_name',
         allowNull: false
     },
-    sex: {
-        type: DataTypes.STRING,
-        allowNull: true
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
-    position: {
+    disease: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
-    birth: {
+    createdAt: {
         type: DataTypes.DATE,
         allowNull: false
     },
-    phone: {
-        type: DataTypes.STRING,
+    userId: {
+        type: DataTypes.INTEGER,
+        field: 'user_id',
         allowNull: false
     },
-    address: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    email: {
-        type: DataTypes.STRING,
+    animalId: {
+        type: DataTypes.INTEGER,
+        field: 'animal_id',
         allowNull: false
     },
     clinicId: {
@@ -38,10 +35,9 @@ Staff.init({
         field: 'clinic_id',
         allowNull: false
     }
-
 },{
     sequelize,
-    modelName: 'staffs',
+    modelName: 'blood_requests',
     underscored: true,
     timestamps: false,
     // defaultScope: {
@@ -49,9 +45,8 @@ Staff.init({
     // }
 });
 
-Staff.associate = ( models ) => {
-    Staff.belongsTo(models.Clinic);
-};
+// Clinics.associate = ( models ) => {
+//     Clinics.hasMany(models.Animals);
+// };
 
-module.exports = Staff;
-
+module.exports = BloodRequest;

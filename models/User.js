@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
 
-class Users extends Model {}
+class User extends Model {}
 
-Users.init({
+User.init({
     fullName: {
         type: DataTypes.STRING,
         field: 'full_name',
@@ -38,13 +38,13 @@ Users.init({
     modelName: 'users',
     underscored: true,
     timestamps: false,
-    defaultScope: {
-        attributes: { exclude: ['id'] }
-    }
+    // defaultScope: {
+    //     attributes: { exclude: ['id'] }
+    // }
 });
 
-Users.associate = ( models ) => {
-    Users.hasMany(models.Animals);
+User.associate = (models ) => {
+    User.hasMany(models.Animal);
 };
 
-module.exports = Users;
+module.exports = User;

@@ -1,29 +1,35 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
 
-class Donations extends Model {}
+class MedicalCheck extends Model {}
 
-Donations.init({
-    createdAt: {
-        type: DataTypes.DATE,
+MedicalCheck.init({
+    clinicId: {
+        type: DataTypes.INTEGER,
+        field: 'clinic_id',
         allowNull: false
     },
-    expireAt: {
-        type: DataTypes.DATE,
+    doctorId: {
+    type: DataTypes.INTEGER,
+        field: 'doctor_id',
         allowNull: false
     },
-    weight: {
+    animalId: {
+        type: DataTypes.INTEGER,
+        field: 'animal_id',
+        allowNull: false
+    },
+    diagnosis: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    group: {
-        type: DataTypes.STRING,
+    date: {
+        type: DataTypes.DATE,
         allowNull: false
     }
-    //donor, doctor, blood bank ids
 },{
     sequelize,
-    modelName: 'users',
+    modelName: 'medical_сhecks',
     underscored: true,
     timestamps: false,
     // defaultScope: {
@@ -35,4 +41,4 @@ Donations.init({
 //     Clinics.hasMany(models.Animals);
 // };
 
-module.exports = Clinics;
+module.exports = MedicalCheck;

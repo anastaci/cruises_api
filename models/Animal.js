@@ -1,17 +1,18 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
 
-class Animals extends Model {}
+class Animal extends Model {}
 
-Animals.init({
+Animal.init({
     name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    // ownerId:{
-    //     type: DataTypes.INTEGER,
-    //     allowNull:false
-    // },
+    userId:{
+        type: DataTypes.INTEGER,
+        field: 'user_id',
+        allowNull:false
+    },
     birth: {
         type: DataTypes.DATE,
         allowNull: false
@@ -47,8 +48,8 @@ Animals.init({
     // }
 });
 
-Animals.associate = ( models ) => {
-    Animals.belongsTo(models.Users);
+Animal.associate = ( models ) => {
+    Animal.belongsTo(models.User);
 };
 
-module.exports = Animals;
+module.exports = Animal;

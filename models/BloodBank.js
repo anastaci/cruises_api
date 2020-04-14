@@ -1,24 +1,25 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
 
-class Clinics extends Model {}
+class BloodBank extends Model {}
 
-Clinics.init({
-    name: {
+BloodBank.init({
+    clinicId: {
+        type: DataTypes.INTEGER,
+        field: 'clinic_id',
+        allowNull: false
+    },
+    specialization: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    address: {
-        type: DataTypes.STRING,
+    capacity: {
+        type: DataTypes.INTEGER,
         allowNull: false
-    },
-    phone: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
+    }
 },{
     sequelize,
-    modelName: 'clinics',
+    modelName: 'blood_banks',
     underscored: true,
     timestamps: false,
     // defaultScope: {
@@ -30,4 +31,4 @@ Clinics.init({
 //     Clinics.hasMany(models.Animals);
 // };
 
-module.exports = Clinics;
+module.exports = BloodBank;

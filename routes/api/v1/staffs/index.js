@@ -1,49 +1,51 @@
 const { Router } = require('express');
 const router = new Router();
 const asyncHandler = require('express-async-handler');
-const { Animal } = require('../../../../models');
+const { Staff } = require('../../../../models');
 const faker = require('faker');
 
 router.get('/', asyncHandler(async (req, res) => {
-    const animals = await Animal.findAll();
+    const staff = await Staff.findAll();
 
     res.send({
-        data: animals
+        data: staff
     })
 }));
 
 //post
-// router.get('/create', asyncHandler(async (req, res) => {
-//     const animal = await Animal.create({
-//         name: faker.name.firstName(),
-//         birth: faker.date.past(10, '2000-01-01'),
-//         type: 'dog',
-//         breed: `Немецкая овчарка`,
-//         color: 'подпалый',
-//         sex: 'male',
-//     });
-//
-//     res.send({
-//         data: animal
-//     })
-// }));
+router.get('/create', asyncHandler(async (req, res) => {
+    const staff = await Staff.create({
+        clinicId: 1,
+        fullName: faker.name.findName(),
+        position: 'doctor',
+        birth: faker.date.past(10, '2000-01-01'),
+        phone: '+38 063 385 98 77',
+        sex: `male`,
+        address: 'Україна, Вінниця, вул. Пирогова',
+        email: faker.internet.email()
+    });
+
+    res.send({
+        data: staff
+    })
+}));
 
 router.put('/:id', asyncHandler(async (req, res) => {
-    let animal = await Animal.findOne({
+    let staff = await Staff.findOne({
         where: {
             id: req.params.id
         }
     });
 
-    if(!animal){
+    if(!staff){
         res.status(403).send('id does not exist')
     }else{
-        animal = await animal.update({
+        staff = await staff.update({
             ...req.body
         });
 
         res.send({
-            data: animal
+            data: staff
         });
     }
 }));
@@ -51,29 +53,30 @@ router.put('/:id', asyncHandler(async (req, res) => {
 
 
 router.delete('/:id', asyncHandler(async (req, res) => {
-    const deletedAnimal = await Animal.destroy({
+    const deletedStaff = await Staff.destroy({
         where: {
             id: req.params.id
         }
     });
 
     res.send({
-        data: deletedAnimal
+        data: deletedStaff
     });
 }));
 
 
 
 router.get('/:id', asyncHandler(async (req, res) => {
-    const animal = await Animal.findOne({
+    const staff = await Staff.findOne({
         where: {
             id: req.params.id
         }
     });
 
     res.send({
-        data: animal
+        data: staff
     })
 }));
 
 module.exports = router;
+

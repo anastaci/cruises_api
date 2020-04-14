@@ -1,9 +1,13 @@
 const express = require('express');
-const asyncHandler = require('express-async-handler');
 
 const usersRoutes = require('./routes/api/v1/users');
 const animalsRoutes = require('./routes/api/v1/animals');
-// const ownersRoutes = require('./routes/api/v1/owners');
+const clinicsRoutes = require('./routes/api/v1/clinics');
+const staffsRoutes = require('./routes/api/v1/staffs');
+const donationsRoutes = require('./routes/api/v1/donations');
+const bloodBanksRoutes = require('./routes/api/v1/bloodBanks');
+const bloodRequestsRoutes = require('./routes/api/v1/bloodRequests');
+const medicalChecksRoutes = require('./routes/api/v1/medicalChecks');
 
 const app = express();
 
@@ -28,7 +32,12 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/users', usersRoutes);
 app.use('/api/v1/animals', animalsRoutes);
-// app.use('/api/v1/owners', ownersRoutes);
+app.use('/api/v1/clinics', clinicsRoutes);
+app.use('/api/v1/staffs', staffsRoutes);
+app.use('/api/v1/donations', donationsRoutes);
+app.use('/api/v1/bloodBanks', bloodBanksRoutes);
+app.use('/api/v1/bloodRequests', bloodRequestsRoutes);
+app.use('/api/v1/medicalChecks', medicalChecksRoutes);
 
 app.use((error, req, res, next) => {
     res.send({
