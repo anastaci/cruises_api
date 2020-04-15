@@ -1,13 +1,13 @@
 const express = require('express');
 
-const usersRoutes = require('./routes/api/v1/users');
-const animalsRoutes = require('./routes/api/v1/animals');
-const clinicsRoutes = require('./routes/api/v1/clinics');
-const staffsRoutes = require('./routes/api/v1/staffs');
-const donationsRoutes = require('./routes/api/v1/donations');
-const bloodBanksRoutes = require('./routes/api/v1/bloodBanks');
-const bloodRequestsRoutes = require('./routes/api/v1/bloodRequests');
-const medicalChecksRoutes = require('./routes/api/v1/medicalChecks');
+const cruisesRouts = require('./routes/api/v1/cruises')
+const amenitiesRouts = require('./routes/api/v1/amenities')
+const bookingRoomRouts = require('./routes/api/v1/bookingRooms')
+const decksRouts = require('./routes/api/v1/decks')
+const entertainmentsRouts = require('./routes/api/v1/entertainments')
+const passengersRouts = require('./routes/api/v1/passengers')
+const roomsRouts = require('./routes/api/v1/rooms')
+const routesRouts = require('./routes/api/v1/routes')
 
 const app = express();
 
@@ -30,14 +30,15 @@ app.get('/', (req, res) => {
     });
 });
 
-app.use('/api/v1/users', usersRoutes);
-app.use('/api/v1/animals', animalsRoutes);
-app.use('/api/v1/clinics', clinicsRoutes);
-app.use('/api/v1/staffs', staffsRoutes);
-app.use('/api/v1/donations', donationsRoutes);
-app.use('/api/v1/bloodBanks', bloodBanksRoutes);
-app.use('/api/v1/bloodRequests', bloodRequestsRoutes);
-app.use('/api/v1/medicalChecks', medicalChecksRoutes);
+app.use('/api/v1/cruises',cruisesRouts );
+app.use('/api/v1/amenities',amenitiesRouts );
+app.use('/api/v1/bookingRoom',bookingRoomRouts );
+app.use('/api/v1/decks',decksRouts );
+app.use('/api/v1/entertainments',entertainmentsRouts );
+app.use('/api/v1/passengers',passengersRouts   );
+app.use('/api/v1/rooms',roomsRouts );
+app.use('/api/v1/routes',routesRouts );
+
 
 app.use((error, req, res, next) => {
     res.send({

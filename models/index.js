@@ -1,12 +1,12 @@
 const models = {
-    User: require('./User'),
-    Animal: require('./Animal'),
-    Clinic: require('./Clinic'),
-    Staff: require('./Staff'),
-    Donation: require('./Donation'),
-    BloodRequest: require('./BloodRequest'),
-    BloodBank: require('./BloodBank'),
-    MedicalCheck: require('./MedicalCheck')
+    Cruise: require('./Cruise'),
+    Amenity:require('./Amenity'),
+    BookingRoom:require('./BookingRoom'),
+    Deck:require('./Deck'),
+    Entertainment:require('./Entertainment'),
+    Passenger:require('./Passenger'),
+    Room:require('./Room'),
+    Route:require('./Route'),
 };
 
 const modelNames = Object.keys(models);

@@ -1,57 +1,51 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../sequelize');
 
-class Staff extends Model {}
+class Room extends Model {}
 
-Staff.init({
-    fullName: {
+Room.init({
+    bedsTypes: {
         type: DataTypes.STRING,
-        field: 'full_name',
+        field: 'beds_types',
         allowNull: false
     },
-    sex: {
+    windowView: {
         type: DataTypes.STRING,
-        allowNull: true
-    },
-    position: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    birth: {
-        type: DataTypes.DATE,
+        field: 'window_view',
         allowNull: false
     },
-    phone: {
+    balconyAvailability: {
         type: DataTypes.STRING,
+        field: 'balcony_availability',
         allowNull: false
     },
-    address: {
+    roomCategory: {
         type: DataTypes.STRING,
+        field: 'room_category',
         allowNull: false
     },
-    email: {
+    roomNumber: {
         type: DataTypes.STRING,
+        field: 'room_number',
         allowNull: false
     },
-    clinicId: {
+    cruisesId: {
         type: DataTypes.INTEGER,
-        field: 'clinic_id',
+        field: 'cruises_id',
         allowNull: false
     }
-
-},{
+     },{
     sequelize,
-    modelName: 'staffs',
-    underscored: true,
-    timestamps: false,
+        modelName: 'rooms',
+        underscored: true,
+        timestamps: false,
     // defaultScope: {
     //     attributes: { exclude: ['id'] }
     // }
 });
 
-Staff.associate = ( models ) => {
-    Staff.belongsTo(models.Clinic);
-};
+// // User.associate = (models ) => {
+// //     User.hasMany(models.Animal);
+// };
 
-module.exports = Staff;
-
+module.exports =Room ;
